@@ -1,7 +1,8 @@
 Cashcog
 =======================
 
-The Cashcog-API only offers events about newly created expenses. The approval process however is missing and has to be added externally. 
+The Cashcog-API only offers events about newly created expenses. The application consumes the expense events provided by the Cashcog Expense-API, validates and store them in mongo db. A front-end web application powered by zinggrid which is intuitive and responsive that will query/filter and sort them, and approve or decline them
+
 
 
 Table of Contents
