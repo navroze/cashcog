@@ -6,14 +6,18 @@ from marshmallow import ValidationError, pprint
 from pymongo import MongoClient
 client = MongoClient('mongodb://localhost:27017/cashcog')
 
+count = 0
 
 def validate_payload(payload):
+    global count
     db = client.expenses_db
     try:
         schema = ExpenseSchema()
         schema.load(payload)
         payload["is_validated"] = True
         db.expenses.insert_one(payload)
+        count = count + 1
+        print("Total documents inserted: ", count)
     except ValidationError as ve:
         payload["errors"] = ve.messages
         pprint(ve)
